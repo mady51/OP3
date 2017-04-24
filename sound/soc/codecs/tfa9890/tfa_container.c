@@ -281,15 +281,15 @@ int tfaContWriteRegsProf(struct tfa98xx *tfa98xx, int profile)
 	/* process the list until a patch, file of profile is encountered */
 	for (i = 0; i < prof->length; i++) {
 		if ( prof->list[i].type == dscPatch ||
-		     prof->list[i].type ==dscFile ||
-		     prof->list[i].type ==dscProfile )
+		     prof->list[i].type == dscFile ||
+		     prof->list[i].type == dscProfile )
 			break;
 
 		if (prof->list[i].type & dscBitfieldBase) {
 			err = tfaRunWriteBitfield(tfa98xx, tfaContDsc2Bf(prof->list[i]));
 		}
 
-		if (!prof->list[i].type == dscRegister) {
+		if (prof->list[i].type == dscRegister) {
 			err = tfaRunWriteRegister(tfa98xx, (struct nxpTfaRegpatch *)(base + prof->list[i].offset));
 		}
 
