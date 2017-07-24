@@ -1,3 +1,15 @@
+Full credits to @Flar2 for kernel source/base, 
+I'm just here to optimize for the device and add some features flar doesn't use.
+
+To build just edit 'CROSS_COMPILE := ' line in /Makefile to your toolchain location on your system,
+Then just follow standard commands listed here: 
+create 'out' directory
+sudo make path/to/out/folder hd_defconfig 
+sudo time make path/to/out/folder -j #ofcpucores
+?????
+Profit
+
+
         Linux kernel release 3.x <http://kernel.org/>
 
 These are the release notes for Linux version 3.  Read them carefully,
