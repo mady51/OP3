@@ -1,7 +1,7 @@
 VERSION = 3
 PATCHLEVEL = 18
 SUBLEVEL = 31
-EXTRAVERSION = -HolyDragon-v1.1
+EXTRAVERSION = -HolyDragon-v1.4
 NAME = Shuffling Zombie Juror
 
 # *DOCUMENTATION*
@@ -252,7 +252,7 @@ ARCH		?= $(SUBARCH)
 CROSS_COMPILE	?= $(CONFIG_CROSS_COMPILE:"%"=%)
 ARCH		:= arm64
 SUBARCH		:= arm64
-CROSS_COMPILE	:= ../../../android/linaro-4.9.4-2017.01/bin/aarch64-linux-gnu-
+CROSS_COMPILE	:= /home/holyangel/android/linaro-4.9.4-2017.01/bin/aarch64-linux-gnu-
 
 # Architecture as present in compile.h
 UTS_MACHINE 	:= $(ARCH)
