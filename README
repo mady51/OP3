@@ -1,3 +1,37 @@
+		HolyDragon Kernel Release Notes 2.x
+
+This kernel is based on stock oneplus source for the oneplus3/3T.
+Defconfig: hd_defconfig
+Toolchain: Pre-set to use Linaro-4.9.4_2017.01
+
+To build:
+Edit CROSS_COMPILE line in 'Makefile' to point to your full path 
+location of your desired toolchain. 
+NOTE: This kernel is meant to be built with 4.9.x only. Will need fixes
+to run a higher version toolchain.
+
+In Terminal in root of this kernel directory:
+mkdir -p out
+make O=/full/path/to/out hd_defconfig
+make O=/full/path/to/out -j #cpu-cores
+?????
+Profit
+
+Credits:
+Much love to Flar2 for assistance and giving authorization for use
+Much love to GuneetAtwal for inpsiration on kernel optimization
+FranciscoFranco
+Friedrich420
+Savoca
+Dorimanx
+Sultanxda
+andip71
+AudioGod
+Faux123
+LordBoeffla
+
+-------------------------------------------------------------------------------
+
         Linux kernel release 3.x <http://kernel.org/>
 
 These are the release notes for Linux version 3.  Read them carefully,
