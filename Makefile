@@ -312,9 +312,8 @@ EXTRA_OPTS	:= -falign-functions=1 -falign-loops=1 -falign-jumps=1 -falign-labels
 # Arm Architecture Specific
 # fall back to -march=armv8-a in case the compiler isn't compatible
 # with -mcpu and -mtune
-ARM_ARCH_OPT := $(call cc-option,-march=armv8-a+crc) -mcpu=cortex-a57.cortex-a53+crc+crypto+fp+simd \
-				--param l1-cache-line-size=64 --param l1-cache-size=32 \
-				-mfix-cortex-a53-835769 -mfix-cortex-a53-843419 -mstrict-align
+ARM_ARCH_OPT := $(call cc-option,-march=armv8-a) -mcpu=cortex-a57+crc+crypto+fp+simd \
+				--param l1-cache-line-size=64 --param l1-cache-size=32 --param l2-cache-size=512
 
 # Optional
 GEN_OPT_FLAGS := \
