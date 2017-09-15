@@ -308,6 +308,9 @@ EXTRA_OPTS	:= -falign-functions=1 -falign-loops=1 -falign-jumps=1 -falign-labels
 				-fira-hoist-pressure -fira-loop-pressure \
 				-fgcse-sm -fgcse-las -fgcse-after-reload \
                 -fsched-pressure -fsched-spec-load \
+                -fno-prefetch-loop-arrays -fpredictive-commoning -ftree-vectorize \
+                -fvect-cost-model=dynamic -fsimd-cost-model=dynamic \
+                -ftree-partial-pre 
 
 # Arm Architecture Specific
 # fall back to -march=armv8-a in case the compiler isn't compatible
