@@ -655,7 +655,13 @@ KBUILD_CFLAGS	+= $(call cc-option,-fno-delete-null-pointer-checks,)
 ifdef CONFIG_CC_OPTIMIZE_FOR_SIZE
 KBUILD_CFLAGS	+= -Os $(call cc-disable-warning,maybe-uninitialized,)
 else
-KBUILD_CFLAGS	+= -O2 $(call cc-disable-warning,maybe-uninitialized,)
+KBUILD_CFLAGS	+= -O2 $(call cc-disable-warning,maybe-uninitialized,) 
+KBUILD_CFLAGS	+= $(call cc-disable-warning,bool-compare,) 
+KBUILD_CFLAGS	+= $(call cc-disable-warning,memset-transposed-args,) 
+KBUILD_CFLAGS	+= $(call cc-disable-warning,logical-not-parentheses,)
+KBUILD_CFLAGS	+= $(call cc-disable-warning,misleading-indentation,)
+KBUILD_CFLAGS	+= $(call cc-disable-warning,unused-variable,)
+KBUILD_CFLAGS	+= $(call cc-disable-warning,unused-const-variable,) 
 endif
 
 # Tell gcc to never replace conditional load with a non-conditional one
