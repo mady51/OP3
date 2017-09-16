@@ -299,7 +299,7 @@ EXTRA_OPTS	:= -falign-functions=1 -falign-loops=1 -falign-jumps=1 -falign-labels
                 -fsched-pressure -fsched-spec-load \
                 -fno-prefetch-loop-arrays -fpredictive-commoning -ftree-vectorize \
                 -fvect-cost-model=dynamic -fsimd-cost-model=dynamic \
-                -ftree-partial-pre 
+                -ftree-partial-pre -fopenmp -fopenmp-simd
 
 # Arm Architecture Specific
 # fall back to -march=armv8-a in case the compiler isn't compatible
