@@ -252,7 +252,7 @@ ARCH		?= $(SUBARCH)
 CROSS_COMPILE	?= $(CONFIG_CROSS_COMPILE:"%"=%)
 ARCH		:= arm64
 SUBARCH		:= arm64
-CROSS_COMPILE	:= /home/holyangel/android/linaro-4.9.4-2017.01/bin/aarch64-linux-gnu-
+CROSS_COMPILE	:= /home/holyangel/android/aarch64-cortex_a57-linux-gnu-lin6.4-17.08/bin/aarch64-cortex_a57-linux-gnu-
 
 # Architecture as present in compile.h
 UTS_MACHINE 	:= $(ARCH)
