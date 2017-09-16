@@ -301,7 +301,7 @@ CONFIG_SHELL := $(shell if [ -x "$$BASH" ]; then echo $$BASH; \
 # SkyDragon Optimization Flags #
 
 # Graphite
-# GRAPHITE	:= -fgraphite -fgraphite-identity -floop-nest-optimize 
+GRAPHITE	:= -fgraphite-identity -floop-nest-optimize -ftree-loop-distribution -ftree-loop-distribute-patterns
 
 # Extra GCC Optimizations	  
 EXTRA_OPTS	:= -falign-functions=1 -falign-loops=1 -falign-jumps=1 -falign-labels=1 \
