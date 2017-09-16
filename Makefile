@@ -287,17 +287,6 @@ ifeq ($(ARCH),tilegx)
        SRCARCH := tile
 endif
 
-# Where to locate arch specific headers
-hdr-arch  := $(SRCARCH)
-
-KCONFIG_CONFIG	?= .config
-export KCONFIG_CONFIG
-
-# SHELL used by kbuild
-CONFIG_SHELL := $(shell if [ -x "$$BASH" ]; then echo $$BASH; \
-	  else if [ -x /bin/bash ]; then echo /bin/bash; \
-	  else echo sh; fi ; fi)
-
 # SkyDragon Optimization Flags #
 
 # Graphite
@@ -323,6 +312,17 @@ GEN_OPT_FLAGS := \
  -DNDEBUG -pipe \
  -fomit-frame-pointer -fivopts \
  -fmodulo-sched -fmodulo-sched-allow-regmoves
+
+# Where to locate arch specific headers
+hdr-arch  := $(SRCARCH)
+
+KCONFIG_CONFIG	?= .config
+export KCONFIG_CONFIG
+
+# SHELL used by kbuild
+CONFIG_SHELL := $(shell if [ -x "$$BASH" ]; then echo $$BASH; \
+	  else if [ -x /bin/bash ]; then echo /bin/bash; \
+	  else echo sh; fi ; fi)
 
 HOSTCC       = gcc
 HOSTCXX      = g++
