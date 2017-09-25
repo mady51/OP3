@@ -299,13 +299,14 @@ EXTRA_OPTS	:= -falign-functions=1 -falign-loops=1 -falign-jumps=1 -falign-labels
                 -fsched-pressure -fsched-spec-load \
                 -fno-prefetch-loop-arrays -fpredictive-commoning -ftree-vectorize \
                 -fvect-cost-model=dynamic -fsimd-cost-model=dynamic \
-                -ftree-partial-pre -fopenmp -fopenmp-simd
+                -ftree-partial-pre
 
 # Arm Architecture Specific
 # fall back to -march=armv8-a in case the compiler isn't compatible
 # with -mcpu and -mtune
-ARM_ARCH_OPT := $(call cc-option,-march=armv8-a+crc,) -mcpu=cortex-a57+crc+crypto+fp+simd \
-				--param l1-cache-line-size=64 --param l1-cache-size=32 --param l2-cache-size=512
+ARM_ARCH_OPT := $(call cc-option,-march=armv8.1-a+crc+lse,) -mcpu=cortex-a57+crc+crypto+fp+simd \
+				--param l1-cache-line-size=64 --param l1-cache-size=32 --param l2-cache-size=512 \
+				-mpc-relative-literal-loads
 
 # Optional
 GEN_OPT_FLAGS := \
@@ -404,11 +405,11 @@ CC		= $(srctree)/scripts/gcc-wrapper.py $(REAL_CC)
 
 CHECKFLAGS     := -D__linux__ -Dlinux -D__STDC__ -Dunix -D__unix__ \
 		  -Wbitwise -Wno-return-void $(CF)
-CFLAGS_MODULE   = $(CFLAGS_KERNEL) -flto -fuse-linker-plugin
-AFLAGS_MODULE   = $(CFLAGS_KERNEL) -flto -fuse-linker-plugin
-LDFLAGS_MODULE  = --strip-debug
+CFLAGS_MODULE   =
+AFLAGS_MODULE   = $(CFLAGS_KERNEL) -flto -fuse-linker-plugin -r
+LDFLAGS_MODULE  = 
 CFLAGS_KERNEL	= $(GEN_OPT_FLAGS) $(ARM_ARCH_OPT) $(EXTRA_OPTS) $(GRAPHITE) 
-AFLAGS_KERNEL	= $(CFLAGS_KERNEL) -flto -fuse-linker-plugin
+AFLAGS_KERNEL	= $(CFLAGS_KERNEL) -flto -fuse-linker-plugin -r
 CFLAGS_GCOV	= 
 
 
