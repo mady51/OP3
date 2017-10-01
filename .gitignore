@@ -90,6 +90,7 @@ out/*
 *.orig
 *~
 \#*#
+build.sh
 
 #
 # Leavings from module signing
