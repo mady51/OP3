@@ -250,5 +250,5 @@ static void __exit sha2_ce_mod_fini(void)
 	crypto_unregister_shashes(algs, ARRAY_SIZE(algs));
 }
 
-module_cpu_feature_match(SHA2, sha2_ce_mod_init);
+__attribute__((used))module_cpu_feature_match(SHA2, sha2_ce_mod_init);
 module_exit(sha2_ce_mod_fini);

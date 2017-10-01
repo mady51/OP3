@@ -1137,7 +1137,7 @@ static int ping_v4_seq_show(struct seq_file *seq, void *v)
 	return 0;
 }
 
-static const struct seq_operations ping_v4_seq_ops = {
+__attribute__((used))static const struct seq_operations ping_v4_seq_ops = {
 	.show		= ping_v4_seq_show,
 	.start		= ping_v4_seq_start,
 	.next		= ping_seq_next,

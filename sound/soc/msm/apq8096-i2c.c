@@ -70,7 +70,7 @@ static struct platform_device *spdev;
 static int apq_mi2s_rx_ch = 2;
 static int apq_mi2s_tx_ch = 1;
 
-static const char *const pin_states[] = {"Disable", "active"};
+__attribute__((used))static const char *const pin_states[] = {"Disable", "active"};
 
 static const char *const auxpcm_rate_text[] = {"8000", "16000"};
 static const struct soc_enum apq8096_i2c_auxpcm_enum[] = {

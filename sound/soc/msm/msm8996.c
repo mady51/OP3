@@ -96,7 +96,7 @@ static int hdmi_rx_sample_rate = SAMPLING_RATE_48KHZ;
 static bool codec_reg_done;
 
 static const char *const hifi_function[] = {"Off", "On"};
-static const char *const pin_states[] = {"Disable", "active"};
+__attribute__((used))static const char *const pin_states[] = {"Disable", "active"};
 static const char *const spk_function[] = {"Off", "On"};
 static const char *const slim0_rx_ch_text[] = {"One", "Two"};
 static const char *const slim5_rx_ch_text[] = {"One", "Two"};

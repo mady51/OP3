@@ -151,5 +151,5 @@ static void __exit aes_mod_exit(void)
 	crypto_unregister_alg(&aes_alg);
 }
 
-module_cpu_feature_match(AES, aes_mod_init);
+__attribute__((used))module_cpu_feature_match(AES, aes_mod_init);
 module_exit(aes_mod_exit);

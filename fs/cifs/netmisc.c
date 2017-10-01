@@ -130,7 +130,7 @@ static const struct smb_to_posix_error mapping_table_ERRSRV[] = {
 	{0, 0}
 };
 
-static const struct smb_to_posix_error mapping_table_ERRHRD[] = {
+__attribute__((used))static const struct smb_to_posix_error mapping_table_ERRHRD[] = {
 	{0, 0}
 };
 

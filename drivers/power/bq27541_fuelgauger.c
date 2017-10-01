@@ -1405,7 +1405,7 @@ static void bq27541_shutdown(struct i2c_client *client)
 		backup_soc_ex(di->soc_pre);
 }
 
-static const struct of_device_id bq27541_match[] = {
+__attribute__((used))static const struct of_device_id bq27541_match[] = {
 	{ .compatible = "ti,bq27541-battery" },
 	{ },
 };
