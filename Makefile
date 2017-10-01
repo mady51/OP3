@@ -1,7 +1,7 @@
 VERSION = 3
 PATCHLEVEL = 18
 SUBLEVEL = 31
-EXTRAVERSION = -HolyDragon-v2.5
+EXTRAVERSION = -HolyDragon-v2.5.1
 NAME = Shuffling Zombie Juror
 
 # *DOCUMENTATION*
@@ -656,6 +656,8 @@ ifdef CONFIG_CC_OPTIMIZE_FOR_SIZE
 KBUILD_CFLAGS	+= -Os $(call cc-disable-warning,maybe-uninitialized,)
 else
 KBUILD_CFLAGS	+= -O2 $(call cc-disable-warning,maybe-uninitialized,) 
+KBUILD_CFLAGS	+= $(call cc-disable-warning,bool-compare,)
+KBUILD_CFLAGS	+= $(call cc-disable-warning,logical-not-parentheses,)
 endif
 
 # Tell gcc to never replace conditional load with a non-conditional one
