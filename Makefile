@@ -1,7 +1,7 @@
 VERSION = 3
 PATCHLEVEL = 18
 SUBLEVEL = 31
-EXTRAVERSION = -HolyDragon-v2.4
+EXTRAVERSION = -HolyDragon-v2.5
 NAME = Shuffling Zombie Juror
 
 # *DOCUMENTATION*
@@ -298,7 +298,7 @@ EXTRA_OPTS	:= -falign-functions=1 -falign-loops=1 -falign-jumps=1 -falign-labels
 				-fgcse-sm -fgcse-las -fgcse-after-reload \
                 -fsched-pressure -fsched-spec-load \
                 -fno-prefetch-loop-arrays -fpredictive-commoning -ftree-vectorize \
-                -fvect-cost-model=dynamic -fsimd-cost-model=dynamic \
+                -fvect-cost-model=cheap -fsimd-cost-model=cheap \
                 -ftree-partial-pre
 
 # Arm Architecture Specific
@@ -306,7 +306,6 @@ EXTRA_OPTS	:= -falign-functions=1 -falign-loops=1 -falign-jumps=1 -falign-labels
 # with -mcpu and -mtune
 ARM_ARCH_OPT := $(call cc-option,-march=armv8.1-a+crc+lse,) -mcpu=cortex-a57+crc+crypto+fp+simd \
 				--param l1-cache-line-size=64 --param l1-cache-size=32 --param l2-cache-size=512 \
-				-mpc-relative-literal-loads
 
 # Optional
 GEN_OPT_FLAGS := \
@@ -405,7 +404,7 @@ CC		= $(srctree)/scripts/gcc-wrapper.py $(REAL_CC)
 
 CHECKFLAGS     := -D__linux__ -Dlinux -D__STDC__ -Dunix -D__unix__ \
 		  -Wbitwise -Wno-return-void $(CF)
-CFLAGS_MODULE   =
+CFLAGS_MODULE   = $(CFLAGS_KERNEL) -flto -fuse-linker-plugin -r
 AFLAGS_MODULE   = $(CFLAGS_KERNEL) -flto -fuse-linker-plugin -r
 LDFLAGS_MODULE  = 
 CFLAGS_KERNEL	= $(GEN_OPT_FLAGS) $(ARM_ARCH_OPT) $(EXTRA_OPTS) $(GRAPHITE) 
