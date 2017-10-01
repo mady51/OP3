@@ -983,7 +983,7 @@ CSID_TG:
     if (i >= count)
         pr_err("%s,Match camera sensor faild!,current sensor name is %s",
             __func__,slave_info->sensor_name);
-    else
+    	else
         push_component_info(CameraID,match_tbl[i].sensor_name,
             match_tbl[i].vendor_name);
 

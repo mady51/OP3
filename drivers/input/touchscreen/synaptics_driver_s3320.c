@@ -1760,7 +1760,7 @@ static ssize_t synap_write_address(struct file *file, const char __user *buffer,
             TPD_DEBUG("reg=0x%x\n",reg[i]);
         }
     }
-    else
+    	else
         block = temp_block;
 	return count;
 }

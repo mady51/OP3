@@ -1295,7 +1295,7 @@ static void hdcp_lib_msg_recvd(struct hdcp_lib_handle *handle)
 	/* check if it's a repeater */
 	if ((rsp_buf->msg[0] == SKE_SEND_EKS_MESSAGE_ID) &&
 			(rsp_buf->msglen == SKE_SEND_EKS_MESSAGE_SIZE)) {
-		if ((rsp_buf->flag ==
+			if ((rsp_buf->flag ==
 			HDCP_TXMTR_SUBSTATE_WAITING_FOR_RECIEVERID_LIST) &&
 						(rsp_buf->timeout > 0))
 			handle->repeater_flag = true;
