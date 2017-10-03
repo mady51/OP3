@@ -203,6 +203,7 @@ void fpsimd_thread_switch(struct task_struct *next)
 void fpsimd_flush_thread(void)
 {
 	memset(&current->thread.fpsimd_state, 0, sizeof(struct fpsimd_state));
+	fpsimd_flush_task_state(current);
 	set_thread_flag(TIF_FOREIGN_FPSTATE);
 }
 
@@ -333,7 +334,7 @@ static struct notifier_block fpsimd_cpu_pm_notifier_block = {
 	.notifier_call = fpsimd_cpu_pm_notifier,
 };
 
-static void fpsimd_pm_init(void)
+static void __init fpsimd_pm_init(void)
 {
 	cpu_pm_register_notifier(&fpsimd_cpu_pm_notifier_block);
 }
