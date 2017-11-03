@@ -30,7 +30,7 @@
 	zu=~/Downloads/HolyDragon_OP3_V/Upload/
 
 # Kernel zip Name
-	kn=HDK_OP3_V2.5.6.2.zip
+	kn=HDK_OP3_V2.5.6.3.zip
 
 ##############################
 
