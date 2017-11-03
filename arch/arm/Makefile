@@ -36,9 +36,9 @@ MMUEXT		:= -nommu
 KBUILD_CFLAGS	+= $(call cc-option,-mno-unaligned-access)
 endif
 
-ifeq ($(CONFIG_FRAME_POINTER),y)
-KBUILD_CFLAGS	+=-fno-omit-frame-pointer -mapcs -mno-sched-prolog
-endif
+#ifeq ($(CONFIG_FRAME_POINTER),y)
+#KBUILD_CFLAGS	+=-fno-omit-frame-pointer -mapcs -mno-sched-prolog
+#endif
 
 ifeq ($(CONFIG_CPU_BIG_ENDIAN),y)
 KBUILD_CPPFLAGS	+= -mbig-endian
