@@ -50,12 +50,14 @@
 
 #define WCD9335_RATES_MASK (SNDRV_PCM_RATE_8000 | SNDRV_PCM_RATE_16000 |\
 			    SNDRV_PCM_RATE_32000 | SNDRV_PCM_RATE_48000 |\
-			    SNDRV_PCM_RATE_96000 | SNDRV_PCM_RATE_192000)
+			    SNDRV_PCM_RATE_96000 | SNDRV_PCM_RATE_192000 |\
+				SNDRV_PCM_RATE_384000)
 /* Fractional Rates */
 #define WCD9335_FRAC_RATES_MASK (SNDRV_PCM_RATE_44100)
 
 #define WCD9335_MIX_RATES_MASK (SNDRV_PCM_RATE_48000 |\
-				SNDRV_PCM_RATE_96000 | SNDRV_PCM_RATE_192000)
+				SNDRV_PCM_RATE_96000 | SNDRV_PCM_RATE_192000 |\
+				SNDRV_PCM_RATE_384000)
 
 #define TASHA_FORMATS_S16_S24_LE (SNDRV_PCM_FMTBIT_S16_LE | \
 				  SNDRV_PCM_FMTBIT_S24_LE | \
@@ -440,6 +442,7 @@ static struct interp_sample_rate int_mix_sample_rate_val[] = {
 	{48000, 0x4},	/* 48K */
 	{96000, 0x5},	/* 96K */
 	{192000, 0x6},	/* 192K */
+	{384000, 0x7},	/* 384K */
 };
 
 static const struct wcd9xxx_ch tasha_rx_chs[TASHA_RX_MAX] = {
@@ -11220,6 +11223,9 @@ static int tasha_hw_params(struct snd_pcm_substream *substream,
 			case 192000:
 				rx_fs_rate = 5;
 				break;
+			case 384000:
+				rx_fs_rate = 6;
+				break;
 			default:
 				dev_err(tasha->dev,
 				"%s: Invalid RX sample rate: %d\n",
@@ -11392,7 +11398,7 @@ static struct snd_soc_dai_driver tasha_dai[] = {
 			.stream_name = "AIF1 Playback",
 			.rates = WCD9335_RATES_MASK | WCD9335_FRAC_RATES_MASK,
 			.formats = TASHA_FORMATS_S16_S24_LE,
-			.rate_max = 192000,
+			.rate_max = 384000,
 			.rate_min = 8000,
 			.channels_min = 1,
 			.channels_max = 2,
@@ -11406,7 +11412,7 @@ static struct snd_soc_dai_driver tasha_dai[] = {
 			.stream_name = "AIF1 Capture",
 			.rates = WCD9335_RATES_MASK,
 			.formats = TASHA_FORMATS,
-			.rate_max = 192000,
+			.rate_max = 384000,
 			.rate_min = 8000,
 			.channels_min = 1,
 			.channels_max = 4,
@@ -11421,7 +11427,7 @@ static struct snd_soc_dai_driver tasha_dai[] = {
 			.rates = WCD9335_RATES_MASK | WCD9335_FRAC_RATES_MASK,
 			.formats = TASHA_FORMATS_S16_S24_LE,
 			.rate_min = 8000,
-			.rate_max = 192000,
+			.rate_max = 384000,
 			.channels_min = 1,
 			.channels_max = 2,
 		},
@@ -11434,7 +11440,7 @@ static struct snd_soc_dai_driver tasha_dai[] = {
 			.stream_name = "AIF2 Capture",
 			.rates = WCD9335_RATES_MASK,
 			.formats = TASHA_FORMATS,
-			.rate_max = 192000,
+			.rate_max = 384000,
 			.rate_min = 8000,
 			.channels_min = 1,
 			.channels_max = 8,
@@ -11449,7 +11455,7 @@ static struct snd_soc_dai_driver tasha_dai[] = {
 			.rates = WCD9335_RATES_MASK | WCD9335_FRAC_RATES_MASK,
 			.formats = TASHA_FORMATS_S16_S24_LE,
 			.rate_min = 8000,
-			.rate_max = 192000,
+			.rate_max = 384000,
 			.channels_min = 1,
 			.channels_max = 2,
 		},
@@ -11477,7 +11483,7 @@ static struct snd_soc_dai_driver tasha_dai[] = {
 			.rates = WCD9335_RATES_MASK | WCD9335_FRAC_RATES_MASK,
 			.formats = TASHA_FORMATS_S16_S24_LE,
 			.rate_min = 8000,
-			.rate_max = 192000,
+			.rate_max = 384000,
 			.channels_min = 1,
 			.channels_max = 2,
 		},
@@ -11491,7 +11497,7 @@ static struct snd_soc_dai_driver tasha_dai[] = {
 			.rates = WCD9335_RATES_MASK | WCD9335_FRAC_RATES_MASK,
 			.formats = TASHA_FORMATS_S16_S24_LE,
 			.rate_min = 8000,
-			.rate_max = 192000,
+			.rate_max = 384000,
 			.channels_min = 1,
 			.channels_max = 8,
 		},
@@ -11549,7 +11555,7 @@ static struct snd_soc_dai_driver tasha_i2s_dai[] = {
 			.stream_name = "AIF1 Playback",
 			.rates = WCD9335_RATES_MASK,
 			.formats = TASHA_FORMATS_S16_S24_LE,
-			.rate_max = 192000,
+			.rate_max = 384000,
 			.rate_min = 8000,
 			.channels_min = 1,
 			.channels_max = 2,
@@ -11563,7 +11569,7 @@ static struct snd_soc_dai_driver tasha_i2s_dai[] = {
 			.stream_name = "AIF1 Capture",
 			.rates = WCD9335_RATES_MASK,
 			.formats = TASHA_FORMATS,
-			.rate_max = 192000,
+			.rate_max = 384000,
 			.rate_min = 8000,
 			.channels_min = 1,
 			.channels_max = 4,
@@ -11577,7 +11583,7 @@ static struct snd_soc_dai_driver tasha_i2s_dai[] = {
 			.stream_name = "AIF2 Playback",
 			.rates = WCD9335_RATES_MASK,
 			.formats = TASHA_FORMATS_S16_S24_LE,
-			.rate_max = 192000,
+			.rate_max = 384000,
 			.rate_min = 8000,
 			.channels_min = 1,
 			.channels_max = 2,
@@ -11591,7 +11597,7 @@ static struct snd_soc_dai_driver tasha_i2s_dai[] = {
 			.stream_name = "AIF2 Capture",
 			.rates = WCD9335_RATES_MASK,
 			.formats = TASHA_FORMATS,
-			.rate_max = 192000,
+			.rate_max = 384000,
 			.rate_min = 8000,
 			.channels_min = 1,
 			.channels_max = 4,
