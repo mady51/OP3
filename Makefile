@@ -1,8 +1,8 @@
 VERSION = 3
 PATCHLEVEL = 18
 SUBLEVEL = 66
-EXTRAVERSION = -HolyDragon-v4.0.4
-NAME = Apalala
+EXTRAVERSION = -MadysOxygen-Kernel
+NAME = Mady51
 
 # *DOCUMENTATION*
 # To see a list of typical targets execute "make help"
@@ -454,7 +454,6 @@ KBUILD_CPPFLAGS := -D__KERNEL__
 
 KBUILD_CFLAGS   := -Werror -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
 		   -fno-strict-aliasing -fno-common \
-		   -Werror-incompatible-pointer-types \
 		   -Wno-format-security -Wno-bool-compare \
 		   -std=gnu89 \
 		   $(GEN_OPT_FLAGS) $(ARM_ARCH_OPT) $(EXTRA_OPTS)
