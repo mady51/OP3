@@ -250,7 +250,7 @@ SUBARCH := $(shell uname -m | sed -e s/i.86/x86/ -e s/x86_64/x86/ \
 # Note: Some architectures assign CROSS_COMPILE in their arch/*/Makefile
 ARCH		?= $(SUBARCH)
 CROSS_COMPILE	?= $(CONFIG_CROSS_COMPILE:"%"=%)
-HDK_TC		:= /home/holyangel/android/sdclang-5.5/bin/
+HDK_TC		:= /home/mady51/KernalDev/android/holydragon/aarch64-cortex_a57-linux-gnu-lin5.5-17.10/bin/
 ARCH		:= arm64
 SUBARCH		:= arm64
 CROSS_COMPILE	:= $(HDK_TC)aarch64-cortex_a57-linux-gnueabi-
@@ -327,7 +327,7 @@ GEN_OPT_FLAGS := \
 
 LTO_FLAGS := -flto -fuse-linker-plugin -fuse-ld=qcld
 
-POLLY_FLAGS := -mllvm -polly \
+#POLLY_FLAGS := -mllvm -polly \
 	-mllvm -polly-parallel \
 	-mllvm -polly-run-dce \
 	-mllvm -polly-run-inliner \
@@ -342,7 +342,7 @@ OPT_FLAGS := -O3 \
 	$(POLLY_FLAGS)
 
 LTO_TRIPLE = $(HDK_TC)lto-	
-LLVM_TRIPLE = $(HDK_TC)llvm-
+#LLVM_TRIPLE = $(HDK_TC)llvm-
 CLANG_TRIPLE = $(HDK_TC)clang
 CPP_TRIPLE = $(HDK_TC)clang++
 
@@ -454,7 +454,7 @@ KBUILD_CPPFLAGS := -D__KERNEL__
 
 KBUILD_CFLAGS   := -Werror -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
 		   -fno-strict-aliasing -fno-common \
-		   -Werror-implicit-function-declaration \
+		   -Werror-incompatible-pointer-types \
 		   -Wno-format-security -Wno-bool-compare \
 		   -std=gnu89 \
 		   $(GEN_OPT_FLAGS) $(ARM_ARCH_OPT) $(EXTRA_OPTS)
@@ -1055,7 +1055,7 @@ PHONY += prepare archprepare prepare0 prepare1 prepare2 prepare3
 prepare3: include/config/kernel.release
 ifneq ($(KBUILD_SRC),)
 	@$(kecho) '  Using $(srctree) as source for kernel'
-	$(Q)if [ -f $(srctree)/.config -o -d $(srctree)/include/config ]; then \
+#	$(Q)if [ -f $(srctree)/.config -o -d $(srctree)/include/config ]; then \
 		echo >&2 "  $(srctree) is not clean, please run 'make mrproper'"; \
 		echo >&2 "  in the '$(srctree)' directory.";\
 		/bin/false; \
