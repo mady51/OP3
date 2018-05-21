@@ -301,7 +301,7 @@ CONFIG_SHELL := $(shell if [ -x "$$BASH" ]; then echo $$BASH; \
 
 # HolyDragon Optimization Flags #
 
-GRAPHITE = -fgraphite -fgraphite-identity -floop-interchange -ftree-loop-distribution -floop-strip-mine -floop-block -ftree-loop-linear
+GRAPHITE = -fgraphite -fgraphite-identity -floop-interchange -ftree-loop-distribution -floop-strip-mine -floop-block -ftree-loop-linear -floop-nest-optimize -floop-parallelize-all
 
 # Extra GCC Optimizations	  
 EXTRA_OPTS := \
@@ -317,7 +317,7 @@ EXTRA_OPTS := \
 # with -mcpu and -mtune
 ARM_ARCH_OPT := \
 	$(call cc-option,-march=armv8.1-a+crc+lse+crypto+fp+simd,) \
-	-mtune=cortex-a57 -mcpu=cortex-a57+crc+crypto+fp+simd \
+	-mtune=cortex-a57 -mcpu=cortex-a57+crc+crypto+fp+simd $(GRAPHITE) \
 	--param l1-cache-line-size=64 --param l1-cache-size=32 --param l2-cache-size=512 
 
 # Optional
